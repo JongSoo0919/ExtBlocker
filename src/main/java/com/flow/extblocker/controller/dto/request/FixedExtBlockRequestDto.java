@@ -9,11 +9,13 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class FixedExtBlockRequestDto {
+    private Long id;
     private String ext;
     private String useYn;
 
     @Builder
-    public FixedExtBlockRequestDto(String ext, String useYn) {
+    public FixedExtBlockRequestDto(Long id, String ext, String useYn) {
+        this.id = id;
         this.ext = ext;
         this.useYn = useYn;
     }

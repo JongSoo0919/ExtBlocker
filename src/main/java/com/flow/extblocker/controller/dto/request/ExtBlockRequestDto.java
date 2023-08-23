@@ -6,11 +6,13 @@ import lombok.*;
 @Getter
 @NoArgsConstructor
 public class ExtBlockRequestDto {
+    private Long id;
     private String ext;
 
     @Builder
-    public ExtBlockRequestDto(String ext) {
+    public ExtBlockRequestDto(Long id, String ext) {
         isValidation(ext);
+        this.id = id;
         this.ext = ext;
     }
 

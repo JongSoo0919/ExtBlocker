@@ -33,7 +33,8 @@ public class FixedExtBlockEntity {
     @Column(name = "mod_date")
     private LocalDateTime modDate;
 
-    public void updateByUseYn(String useYn){
+    public void update(String ext, String useYn){
+        this.ext = ext;
         this.useYn = useYn;
     }
 
