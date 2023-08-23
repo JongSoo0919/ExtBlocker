@@ -1,6 +1,6 @@
 package com.flow.extblocker.entity.ext;
 
-import com.flow.extblocker.controller.dto.ExtBlockDto;
+import com.flow.extblocker.controller.dto.request.ExtBlockRequestDto;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
@@ -38,7 +38,7 @@ public class ExtBlockEntity {
         this.ext = ext;
     }
 
-    public static ExtBlockEntity of(ExtBlockDto dto){
+    public static ExtBlockEntity of(ExtBlockRequestDto dto){
         return ExtBlockEntity.builder()
                 .ext(dto.getExt())
                 .build();

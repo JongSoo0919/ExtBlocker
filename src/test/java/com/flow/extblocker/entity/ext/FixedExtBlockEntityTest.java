@@ -1,6 +1,6 @@
 package com.flow.extblocker.entity.ext;
 
-import com.flow.extblocker.controller.dto.FixedExtBlockDto;
+import com.flow.extblocker.controller.dto.request.FixedExtBlockRequestDto;
 import com.flow.extblocker.repository.FixedExtBlockRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,8 +12,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @DataJpaTest
 class FixedExtBlockEntityTest {
     @Autowired
@@ -21,32 +19,32 @@ class FixedExtBlockEntityTest {
 
     @BeforeEach
     public void init(){
-        List<FixedExtBlockDto> dtos = List.of(
-                FixedExtBlockDto.builder()
+        List<FixedExtBlockRequestDto> dtos = List.of(
+                FixedExtBlockRequestDto.builder()
                         .ext("bat")
                         .useYn("N")
                         .build()
-                ,FixedExtBlockDto.builder()
+                , FixedExtBlockRequestDto.builder()
                         .ext("cmd")
                         .useYn("N")
                         .build()
-                ,FixedExtBlockDto.builder()
+                , FixedExtBlockRequestDto.builder()
                         .ext("com")
                         .useYn("N")
                         .build()
-                ,FixedExtBlockDto.builder()
+                , FixedExtBlockRequestDto.builder()
                         .ext("cpl")
                         .useYn("N")
                         .build()
-                ,FixedExtBlockDto.builder()
+                , FixedExtBlockRequestDto.builder()
                         .ext("ext")
                         .useYn("N")
                         .build()
-                ,FixedExtBlockDto.builder()
+                , FixedExtBlockRequestDto.builder()
                         .ext("scr")
                         .useYn("N")
                         .build()
-                ,FixedExtBlockDto.builder()
+                , FixedExtBlockRequestDto.builder()
                         .ext("js")
                         .useYn("N")
                         .build()

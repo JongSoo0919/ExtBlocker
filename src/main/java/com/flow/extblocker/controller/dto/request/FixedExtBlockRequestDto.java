@@ -1,4 +1,4 @@
-package com.flow.extblocker.controller.dto;
+package com.flow.extblocker.controller.dto.request;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -8,12 +8,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class FixedExtBlockDto {
+public class FixedExtBlockRequestDto {
     private String ext;
     private String useYn;
 
     @Builder
-    public FixedExtBlockDto(String ext, String useYn) {
+    public FixedExtBlockRequestDto(String ext, String useYn) {
         this.ext = ext;
         this.useYn = useYn;
     }

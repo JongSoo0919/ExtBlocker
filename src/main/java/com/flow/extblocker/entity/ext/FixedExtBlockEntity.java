@@ -1,12 +1,11 @@
 package com.flow.extblocker.entity.ext;
 
-import com.flow.extblocker.controller.dto.FixedExtBlockDto;
+import com.flow.extblocker.controller.dto.request.FixedExtBlockRequestDto;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -42,7 +41,7 @@ public class FixedExtBlockEntity {
         this.useYn = useYn;
     }
 
-    public static FixedExtBlockEntity of(FixedExtBlockDto dto){
+    public static FixedExtBlockEntity of(FixedExtBlockRequestDto dto){
         return FixedExtBlockEntity.builder()
                 .ext(dto.getExt())
                 .useYn(dto.getUseYn())

@@ -1,15 +1,15 @@
-package com.flow.extblocker.controller.dto;
+package com.flow.extblocker.controller.dto.request;
 
 
 import lombok.*;
 
 @Getter
 @NoArgsConstructor
-public class ExtBlockDto {
+public class ExtBlockRequestDto {
     private String ext;
 
     @Builder
-    public ExtBlockDto(String ext) {
+    public ExtBlockRequestDto(String ext) {
         isValidation(ext);
         this.ext = ext;
     }

@@ -1,14 +1,12 @@
 package com.flow.extblocker.repository;
 
-import com.flow.extblocker.controller.dto.ExtBlockDto;
+import com.flow.extblocker.controller.dto.request.ExtBlockRequestDto;
 import com.flow.extblocker.entity.ext.ExtBlockEntity;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 class ExtBlockRepositoryTest {
@@ -19,7 +17,7 @@ class ExtBlockRepositoryTest {
     @DisplayName("select 테스트")
     @Test
     public void select(){
-        ExtBlockDto dto = ExtBlockDto.builder()
+        ExtBlockRequestDto dto = ExtBlockRequestDto.builder()
                 .ext("테스트")
                 .build();
 
@@ -32,7 +30,7 @@ class ExtBlockRepositoryTest {
     @DisplayName("insert 테스트")
     @Test
     public void insert(){
-        ExtBlockDto dto = ExtBlockDto.builder()
+        ExtBlockRequestDto dto = ExtBlockRequestDto.builder()
                 .ext("테스트")
                 .build();
 
@@ -44,7 +42,7 @@ class ExtBlockRepositoryTest {
    @DisplayName("update 테스트")
    @Test
    public void update(){
-       ExtBlockDto dto = ExtBlockDto.builder()
+       ExtBlockRequestDto dto = ExtBlockRequestDto.builder()
                .ext("old")
                .build();
 
@@ -58,7 +56,7 @@ class ExtBlockRepositoryTest {
    @DisplayName("delete 테스트")
    @Test
    public void delete(){
-       ExtBlockDto dto = ExtBlockDto.builder()
+       ExtBlockRequestDto dto = ExtBlockRequestDto.builder()
                .ext("테스트")
                .build();
 
