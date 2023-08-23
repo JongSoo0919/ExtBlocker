@@ -1,27 +1,30 @@
 package com.flow.extblocker.entity.ext;
 
-import com.flow.extblocker.controller.dto.ExtBlockDto;
+import com.flow.extblocker.controller.dto.FixedExtBlockDto;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
-@Table(name = "ext_blocks")
+@Table(name = "fixed_ext_blocks")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @ToString
 @EntityListeners(AuditingEntityListener.class)
-public class ExtBlockEntity {
+public class FixedExtBlockEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "ext", unique = true, nullable = false)
     private String ext;
+    @Column(name = "use_yn")
+    private String useYn;
     @CreatedDate
     @Column(name = "reg_date")
     private LocalDateTime regDate;
@@ -29,18 +32,20 @@ public class ExtBlockEntity {
     @Column(name = "mod_date")
     private LocalDateTime modDate;
 
+    public void updateByUseYn(String useYn){
+        this.useYn = useYn;
+    }
+
     @Builder
-    private ExtBlockEntity(String ext) {
+    private FixedExtBlockEntity(String ext, String useYn) {
         this.ext = ext;
+        this.useYn = useYn;
     }
 
-    public void updateByExt(String ext){
-        this.ext = ext;
-    }
-
-    public static ExtBlockEntity of(ExtBlockDto dto){
-        return ExtBlockEntity.builder()
+    public static FixedExtBlockEntity of(FixedExtBlockDto dto){
+        return FixedExtBlockEntity.builder()
                 .ext(dto.getExt())
+                .useYn(dto.getUseYn())
                 .build();
     }
 
@@ -48,7 +53,7 @@ public class ExtBlockEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ExtBlockEntity that = (ExtBlockEntity) o;
+        FixedExtBlockEntity that = (FixedExtBlockEntity) o;
         return Objects.equals(id, that.id);
     }
 
