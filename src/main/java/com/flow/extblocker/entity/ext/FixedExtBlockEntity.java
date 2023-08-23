@@ -11,7 +11,9 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
-@Table(name = "fixed_ext_blocks")
+@Table(name = "fixed_ext_blocks",indexes = {
+        @Index(columnList = "ext")
+})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @ToString

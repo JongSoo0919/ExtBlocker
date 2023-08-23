@@ -1,7 +1,7 @@
-package com.flow.extblocker.entity.ext;
+package com.flow.extblocker.repository;
 
 import com.flow.extblocker.controller.dto.request.FixedExtBlockRequestDto;
-import com.flow.extblocker.repository.FixedExtBlockRepository;
+import com.flow.extblocker.entity.ext.FixedExtBlockEntity;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @DataJpaTest
-class FixedExtBlockEntityTest {
+class FixedExtRepositoryTest {
     @Autowired
     private FixedExtBlockRepository fixedExtBlockRepository;
 

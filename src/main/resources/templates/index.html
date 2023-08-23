@@ -2,9 +2,74 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Hello Thymeleaf</title>
+    <title>Flow Test</title>
 </head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:src="@{/js/index.js}"></script>
+<style>
+    .fixed_table {
+        display: inline;
+        margin-left: 20px;
+    }
+    .fixed_table > span {
+        margin-left: 30px;
+    }
+    .available_div{
+
+    }
+    .available_input > input{
+        display: inline;
+        margin-left: 35px;
+    }
+    .available_table {
+        margin-left: 140px;
+    }
+    .available_table .available_check{
+        border: 1px solid;
+        height: 150px;
+        width: 300px;
+        margin-left: 2px;
+        margin-top: 5px;
+    }
+    .available_check .exts > span > span {
+        border: 1px solid;
+        border-radius: 5px;
+        margin-left: 8px;
+
+    }
+</style>
 <body>
-<h1 th:text="${message}"></h1>
+        <div class="fixed_div">
+            <span>
+                고정 확장자
+                <div class="fixed_table">
+                    <span th:each="item : ${fixedExts}" class ="item">
+                        <label th:for="${item.getId()}">
+                            <input type="checkbox" th:id="${item.getId()}" th:name="fixed_item" th:value="${item.getId()}" th:checked="${false}">
+                            <span th:text="${item.getExt()}"/>
+                        </label>
+                    </span>
+                </div>
+            </span>
+        </div>
+        <div class="available_div">
+            <span class="available_input">
+                커스텀 확장자
+                    <input type="text" class="custom_input">
+                    <input type="button" class="custom_input_btn" th:value="'+ 추가'">
+            </span>
+        </div>
+        <div class="available_table">
+            <div class="available_check">
+                3/200
+                <div class="exts">
+                    <span>
+                        <span>sh  <img src="/images/x-logo.png" style="width: 15px" height="15px" name="ext"></span>
+                        <span>ju  <img src="/images/x-logo.png" style="width: 15px" height="15px" name="ext"></span>
+                        <span>ch  <img src="/images/x-logo.png" style="width: 15px" height="15px" name="ext"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
 </body>
 </html>
