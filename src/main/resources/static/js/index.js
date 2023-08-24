@@ -44,7 +44,6 @@ function getFixedExtList(){
         type:"GET",
         contentType : false,
         processData : false,
-        dataType:"json",
         success:function(obj) {
             setFixedExtList(obj);
         },
@@ -56,7 +55,18 @@ function getFixedExtList(){
 
 function setFixedExtList(obj){
     console.log(obj);
-    let table = $(".fixed_table");
+    let table = $(".fixed_exts");
+    let html = [];
+
+    for(let i = 0; i < obj.length; i++){
+        let useYn = obj[i].useYn === 'Y';
+        html[i] += '<label th:for='+obj[i].id+'>';
+        html[i] += '<input type=checkbox th:id='+obj[i].id+'th:name=fixed_item th:value='+obj[i].id+' th:checked='+useYn+' onclick="updateFixedExt('+obj[i].id+','+useYn+')">'
+        html[i] += '<span th:text='+obj[i].ext+'>';
+        html[i] += '</label>';
+        html[i] += '</span>';
+    }
+    table.html(html);
 
 }
 
@@ -84,12 +94,17 @@ function setCustomExtList(obj){
     }
     table.html(html);
 }
-function updateFixedExt(){
+function updateFixedExt(id, useYn){
+    let body = {
+        "id" : id,
+        "useYn" : useYn
+    };
     $.ajax({
         url: "/api/fixed/ext/"+id,
         type:"PUT",
         contentType : false,
         processData : false,
+        data : JSON.stringify(body),
         dataType:"json",
         success:function() {
             location.reload();
