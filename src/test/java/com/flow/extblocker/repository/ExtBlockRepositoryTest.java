@@ -1,6 +1,6 @@
 package com.flow.extblocker.repository;
 
-import com.flow.extblocker.controller.dto.request.ExtBlockRequestDto;
+import com.flow.extblocker.dto.request.ExtBlockRequestDto;
 import com.flow.extblocker.entity.ext.ExtBlockEntity;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

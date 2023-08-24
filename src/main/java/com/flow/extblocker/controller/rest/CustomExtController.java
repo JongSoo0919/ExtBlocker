@@ -1,8 +1,8 @@
 package com.flow.extblocker.controller.rest;
 
-import com.flow.extblocker.controller.dto.request.ExtBlockRequestDto;
-import com.flow.extblocker.controller.dto.response.ExtBlockResponseDto;
-import com.flow.extblocker.controller.service.impl.CustomExtImpl;
+import com.flow.extblocker.dto.request.ExtBlockRequestDto;
+import com.flow.extblocker.dto.response.ExtBlockResponseDto;
+import com.flow.extblocker.service.impl.CustomExtImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +16,10 @@ import java.util.List;
 @Slf4j
 public class CustomExtController {
     private final CustomExtImpl customExtImpl;
+    @GetMapping("/api/custom/ext-count")
+    public ResponseEntity<Long> getCount(){
+        return ResponseEntity.ok(customExtImpl.readCount());
+    }
 
     @GetMapping("/api/custom/ext")
     public ResponseEntity<List<ExtBlockResponseDto>> getAll(
@@ -28,7 +32,7 @@ public class CustomExtController {
     @PostMapping("/api/custom/ext")
     public Long save(
             HttpServletRequest request,
-            ExtBlockRequestDto dto
+            @RequestBody ExtBlockRequestDto dto
     ) {
         return customExtImpl.save(dto);
     }

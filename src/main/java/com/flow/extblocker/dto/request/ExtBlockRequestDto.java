@@ -1,4 +1,4 @@
-package com.flow.extblocker.controller.dto.request;
+package com.flow.extblocker.dto.request;
 
 
 import lombok.*;

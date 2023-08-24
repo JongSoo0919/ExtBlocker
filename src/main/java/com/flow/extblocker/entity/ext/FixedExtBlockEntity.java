@@ -1,13 +1,10 @@
 package com.flow.extblocker.entity.ext;
 
-import com.flow.extblocker.controller.dto.request.FixedExtBlockRequestDto;
+import com.flow.extblocker.dto.request.FixedExtBlockRequestDto;
+import com.flow.extblocker.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
@@ -17,21 +14,14 @@ import java.util.Objects;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @ToString
-@EntityListeners(AuditingEntityListener.class)
-public class FixedExtBlockEntity {
+public class FixedExtBlockEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "ext", unique = true, nullable = false)
     private String ext;
-    @Column(name = "use_yn")
+    @Column
     private String useYn;
-    @CreatedDate
-    @Column(name = "reg_date")
-    private LocalDateTime regDate;
-    @LastModifiedDate
-    @Column(name = "mod_date")
-    private LocalDateTime modDate;
 
     public void update(String ext, String useYn){
         this.ext = ext;

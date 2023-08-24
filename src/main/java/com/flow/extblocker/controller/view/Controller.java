@@ -1,6 +1,6 @@
 package com.flow.extblocker.controller.view;
 
-import com.flow.extblocker.controller.dto.response.FixedExtBlockResponseDto;
+import com.flow.extblocker.dto.response.FixedExtBlockResponseDto;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ui.Model;

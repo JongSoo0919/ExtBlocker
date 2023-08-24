@@ -1,1 +1,39 @@
+---
+spring:
+  #프로필 설정
+  profiles:
+    active: local
 
+  #mariadb 설정
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3307/flow
+    username: root
+    password: rlawhdtn12!@
+
+  #jpa
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL57Dialect
+    defer-datasource-initialization: true
+
+  #sql
+  sql:
+    init:
+      mode: always
+      continue-on-error: false
+      data-locations: classpath:sql/data.sql
+
+---
+
+---
+spring:
+  profiles:
+    active: prod
+
+---

@@ -1,4 +1,4 @@
-package com.flow.extblocker.controller.dto.response;
+package com.flow.extblocker.dto.response;
 
 import com.flow.extblocker.entity.ext.FixedExtBlockEntity;
 import lombok.Builder;

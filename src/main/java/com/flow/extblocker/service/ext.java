@@ -1,4 +1,4 @@
-package com.flow.extblocker.controller.service;
+package com.flow.extblocker.service;
 
 import java.util.List;
 

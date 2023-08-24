@@ -1,6 +1,6 @@
 package com.flow.extblocker.repository;
 
-import com.flow.extblocker.controller.dto.request.FixedExtBlockRequestDto;
+import com.flow.extblocker.dto.request.FixedExtBlockRequestDto;
 import com.flow.extblocker.entity.ext.FixedExtBlockEntity;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
