@@ -1,10 +1,10 @@
 package com.flow.extblocker.service.impl;
 
-import com.flow.extblocker.controller.dto.request.FixedExtBlockRequestDto;
-import com.flow.extblocker.controller.dto.response.FixedExtBlockResponseDto;
-import com.flow.extblocker.controller.service.ext;
+import com.flow.extblocker.dto.request.FixedExtBlockRequestDto;
+import com.flow.extblocker.dto.response.FixedExtBlockResponseDto;
 import com.flow.extblocker.entity.ext.FixedExtBlockEntity;
 import com.flow.extblocker.repository.FixedExtBlockRepository;
+import com.flow.extblocker.service.ext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
