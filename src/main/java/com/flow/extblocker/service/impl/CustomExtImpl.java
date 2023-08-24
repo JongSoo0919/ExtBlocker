@@ -1,5 +1,6 @@
 package com.flow.extblocker.service.impl;
 
+import com.flow.extblocker.constant.FixedExt;
 import com.flow.extblocker.dto.request.ExtBlockRequestDto;
 import com.flow.extblocker.dto.response.ExtBlockResponseDto;
 import com.flow.extblocker.service.ext;
@@ -10,7 +11,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -28,6 +31,13 @@ public class CustomExtImpl implements ext {
                 .collect(Collectors.toList());
     }
     public Long save(ExtBlockRequestDto dto){
+        if(Arrays.stream(FixedExt.values())
+                .map(ext -> ext.name())
+                .collect(Collectors.toList())
+                .contains(dto.getExt())){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "고정 확장자는 커스텀 확장자로 추가할 수 없습니다.");
+        }
+
         if(extBlockRepository.count() > 200){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "커스텀 확장자는 200개를 넘을 수 없습니다.");
         }
