@@ -1,6 +1,6 @@
 $(document).ready(function (){
     // 고정 확장자 목록 가져오기
-    // getFixedExtList();
+    getFixedExtList();
     // 커스텀 확장자 목록 가져오기
     getCustomExtCount();
     getCustomExtList();
@@ -59,12 +59,12 @@ function setFixedExtList(obj){
     let html = [];
 
     for(let i = 0; i < obj.length; i++){
-        let useYn = obj[i].useYn === 'Y';
-        html[i] += '<label th:for='+obj[i].id+'>';
-        html[i] += '<input type=checkbox th:id='+obj[i].id+'th:name=fixed_item th:value='+obj[i].id+' th:checked='+useYn+' onclick="updateFixedExt('+obj[i].id+','+useYn+')">'
-        html[i] += '<span th:text='+obj[i].ext+'>';
+        let useYn = obj[i].useYn === 'Y' ? "checked" : "";
+        html[i] = '<label th:for='+obj[i].id+'>';
+        // html[i] += '<input type=checkbox th:id="'+obj[i].id+'" th:name=fixed_item th:value="'+obj[i].id+'" th:checked="'+useYn+'" onclick=updateFixedExt("'+obj[i].id+'")>'
+        html[i] += '<input type=checkbox th:id="'+obj[i].id+'" th:name=fixed_item th:value="'+obj[i].id+'" onclick=updateFixedExt('+obj[i].id+') '+useYn+'>'
+        html[i] += '<span th:text="'+obj[i].ext+'">'+obj[i].ext+'</span>';
         html[i] += '</label>';
-        html[i] += '</span>';
     }
     table.html(html);
 
@@ -94,18 +94,12 @@ function setCustomExtList(obj){
     }
     table.html(html);
 }
-function updateFixedExt(id, useYn){
-    let body = {
-        "id" : id,
-        "useYn" : useYn
-    };
+function updateFixedExt(id){
     $.ajax({
         url: "/api/fixed/ext/"+id,
         type:"PUT",
         contentType : false,
         processData : false,
-        data : JSON.stringify(body),
-        dataType:"json",
         success:function() {
             location.reload();
         },

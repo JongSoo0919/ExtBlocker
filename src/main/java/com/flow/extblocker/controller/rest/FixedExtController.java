@@ -42,9 +42,8 @@ public class FixedExtController {
     @PutMapping("/api/fixed/ext/{id}")
     public void update(
             HttpServletRequest request,
-            @PathVariable Long id,
-            FixedExtBlockRequestDto dto
+            @PathVariable Long id
     ) {
-        fixedExtImpl.update(id, dto);
+        fixedExtImpl.update(id);
     }
 }

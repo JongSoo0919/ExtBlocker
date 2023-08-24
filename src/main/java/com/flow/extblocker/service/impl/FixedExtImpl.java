@@ -33,10 +33,11 @@ public class FixedExtImpl implements ext {
     public void delete(Long id){
         fixedExtBlockRepository.deleteById(id);
     }
-    public void update(Long id, FixedExtBlockRequestDto dto){
+    public void update(Long id){
         FixedExtBlockEntity entity = fixedExtBlockRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("변경할 대상 ID가 없습니다."));
-        entity.update(dto.getExt(), dto.getUseYn());
+        String use = "Y".equals(entity.getUseYn()) ? "N":"Y";
+        entity.update(entity.getExt(), use);
         fixedExtBlockRepository.flush(); // 빼도 되는지 여부
     }
 }
