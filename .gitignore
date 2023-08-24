@@ -181,4 +181,5 @@ fabric.properties
 hs_err_pid*
 replay_pid*
 
+src/main/resources/application-db.yml
 # End of https://www.toptal.com/developers/gitignore/api/java,intellij+all,eclipse
