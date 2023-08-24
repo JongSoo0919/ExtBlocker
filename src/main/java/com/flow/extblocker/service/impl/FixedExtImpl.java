@@ -1,4 +1,4 @@
-package com.flow.extblocker.controller.service.impl;
+package com.flow.extblocker.service.impl;
 
 import com.flow.extblocker.controller.dto.request.FixedExtBlockRequestDto;
 import com.flow.extblocker.controller.dto.response.FixedExtBlockResponseDto;

@@ -2,7 +2,7 @@ package com.flow.extblocker.controller.rest;
 
 import com.flow.extblocker.controller.dto.request.FixedExtBlockRequestDto;
 import com.flow.extblocker.controller.dto.response.FixedExtBlockResponseDto;
-import com.flow.extblocker.controller.service.impl.FixedExtImpl;
+import com.flow.extblocker.service.impl.FixedExtImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
