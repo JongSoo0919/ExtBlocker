@@ -6,7 +6,9 @@ import com.flow.extblocker.service.ext;
 import com.flow.extblocker.entity.ext.ExtBlockEntity;
 import com.flow.extblocker.repository.ExtBlockRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,11 +29,11 @@ public class CustomExtImpl implements ext {
     }
     public Long save(ExtBlockRequestDto dto){
         if(extBlockRepository.count() > 200){
-            throw new IllegalStateException("커스텀 확장자는 200개를 넘을 수 없습니다.");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "커스텀 확장자는 200개를 넘을 수 없습니다.");
         }
 
         if(extBlockRepository.findByExt(dto.getExt()).isPresent()){
-            throw new IllegalArgumentException("중복된 확장자가 있습니다.");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "중복된 확장자가 있습니다.");
         }
 
         return extBlockRepository.save(

@@ -2,6 +2,8 @@ package com.flow.extblocker.dto.request;
 
 
 import lombok.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 @Getter
 @NoArgsConstructor
@@ -23,7 +25,7 @@ public class ExtBlockRequestDto {
 
     public void isValidation(String ext){
         if(ext.length() > 20){
-            throw new IllegalArgumentException("확장자의 입력 길이는 20자를 넘을 수 없습니다.");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "확장자의 입력 길이는 20자를 넘을 수 없습니다.");
         }
     }
 }
